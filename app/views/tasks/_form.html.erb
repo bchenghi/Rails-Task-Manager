@@ -1,0 +1,13 @@
+<%= form_with(model: [ @category, @category.tasks.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :Task %><br>
+    <%= form.text_area :task %>
+  </p>
+  <p>
+    <%= form.label :Due%><br>
+    <%= form.date_field :due %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -1,0 +1,31 @@
+
+<p>
+  <strong>Category:</strong>
+  <%= @category.category %>
+</p>
+
+<h2>Tasks</h2>
+<table border='1'>
+  <tr>
+    <th>Task</th>
+    <th>Due (YYYY-MM-DD)</th>
+    <th colspace='2'></th>
+  </tr>
+
+  <% @category.tasks.each do |task| %>
+    <tr>
+      <td><%= task.task %></td>
+      <td><%= task.due %></td>
+      <td><%= link_to 'Delete Task', [task.category, task],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>Add a task:</h2>
+<%= render 'tasks/form' %>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %>
+<%= link_to 'Back', categories_path %>
